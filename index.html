@@ -1254,7 +1254,11 @@ document.getElementById('popup-close-button').addEventListener('click', function
 
 document.getElementById('popup-action-button').addEventListener('click', function() {
     // Add the action to be performed when the button is clicked
+
+    // You can also set a flag to prevent the popup from showing again
+    localStorage.setItem('visited', 'yes');
 });
+
 
 
   </script>
