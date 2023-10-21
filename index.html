@@ -60,26 +60,7 @@
         <button id="popup-action-button"><a href="redirect.html"><strong>SEO</strong></a></button>
     </div>
 </div>
-   <script>
-  // Check if the user has visited the site before
-if (localStorage.getItem('visited') === null) {
-    // Show the popup
-    document.getElementById('popup-container').style.display = 'block';
 
-    // Set a flag to indicate that the user has visited the site
-    localStorage.setItem('visited', 'yes');
-}
-
-document.getElementById('popup-close-button').addEventListener('click', function() {
-    document.getElementById('popup-container').style.display = 'none';
-});
-
-document.getElementById('popup-action-button').addEventListener('click', function() {
-    // Add the action to be performed when the button is clicked
-});
-
-
-  </script>
    <!--new code remove it. to here -->
   <!--
     - #MAIN
@@ -1201,9 +1182,28 @@ document.getElementById('popup-action-button').addEventListener('click', functio
 
   </main>
 
+<!--new sript below -->
+
+<script>
+  // Check if the user has visited the site before
+if (localStorage.getItem('visited') === null) {
+    // Show the popup
+    document.getElementById('popup-container').style.display = 'block';
+
+    // Set a flag to indicate that the user has visited the site
+    localStorage.setItem('visited', 'yes');
+}
+
+document.getElementById('popup-close-button').addEventListener('click', function() {
+    document.getElementById('popup-container').style.display = 'none';
+});
+
+document.getElementById('popup-action-button').addEventListener('click', function() {
+    // Add the action to be performed when the button is clicked
+});
 
 
-
+  </script>
 
 
   <!--
