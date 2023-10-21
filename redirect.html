@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Google Search</title>
+    <style>
+        /* Add CSS styles to style the timer and running text */
+        .search-container {
+            text-align: center;
+            padding: 20px;
+        }
+
+        .search-button-container {
+            display: none;
+        }
+
+        .search-button {
+            background-color: #4285f4; /* Google blue color */
+            color: #fff; /* White text color */
+            padding: 10px 20px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+
+        .picture {
+            max-width: 800px; /* Set the maximum width to 800px */
+            display: block;
+            margin: 0 auto;
+        }
+
+        .timer {
+            font-size: 20px;
+        }
+
+        .error-message {
+            color: red;
+            font-size: 16px;
+        }
+    </style>
+</head>
+<body>
+    <div class="search-container">
+        <strong>After 10 second .Please Scroll and find the website shown in the picture.</strong>
+    </div>
+
+    <div class="search-container">
+        <img class="picture" src="https://lh3.googleusercontent.com/pw/ADCreHfNuI2xBTKz_rueyb33kQyiUmFMVYugTVOVvkJoDDlWZbI2JCDDrnL-O9Iwrdeu1PxU7WmD4hDFS8aSdC2I4qnfRMVQ7dlSb4VLwWP45vWBCyvrew=w2400" alt="Medium-Sized Picture">
+    </div>
+
+    <div class="search-container">
+        <div class="search-button-container">
+            <button class="search-button" onclick="searchGoogle('ashish suman')">Search Google</button>
+        </div>
+        <p class="error-message" id="error-message"></p>
+    </div>
+
+    <div class="search-container">
+        <p class="timer">Redirecting in <span id="countdown">10</span> seconds</p>
+    </div>
+
+    <script>
+        function searchGoogle(keyword) {
+            // Encode the keyword and construct the Google search URL
+            const encodedKeyword = encodeURIComponent(keyword);
+            const googleSearchUrl = `https://www.google.com/search?q=${encodedKeyword}`;
+            
+            // Attempt to open the search results in a new window
+            const newWindow = window.open(googleSearchUrl, '_blank');
+            
+            if (!newWindow || newWindow.closed || typeof newWindow.closed === 'undefined') {
+                // If the popup is blocked or failed to open, show the button container and error message
+                const buttonContainer = document.querySelector('.search-button-container');
+                const errorMessage = document.getElementById('error-message');
+                if (buttonContainer) {
+                    buttonContainer.style.display = 'block';
+                }
+                if (errorMessage) {
+                    errorMessage.textContent = "Unable to redirect. Please press the button.";
+                }
+            }
+        }
+
+        // Countdown timer
+        let countdown = 10;
+        const countdownElement = document.getElementById('countdown');
+        const countdownInterval = setInterval(function() {
+            countdown--;
+            countdownElement.textContent = countdown;
+            if (countdown <= 0) {
+                clearInterval(countdownInterval);
+                searchGoogle('ashish suman');
+            }
+        }, 1000);
+    </script>
+</body>
+</html>
